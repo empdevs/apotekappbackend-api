@@ -1,6 +1,6 @@
 import express from "express";
-import database from "./config/Database.js";
-import CategoryRoutes from './routes/CategoryRoutes.js'; 
+// import database from "./config/Database.js";
+// import CategoryRoutes from './routes/CategoryRoutes.js'; 
 
 const app = express();
 const port = process.env.PORT || 5000;
