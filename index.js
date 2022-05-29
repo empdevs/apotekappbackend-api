@@ -1,6 +1,7 @@
 import express from "express";
 import database from "./config/Database.js";
 import CategoryRoutes from './routes/CategoryRoutes.js'; 
+import cors from 'cors';
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -18,6 +19,8 @@ try{
 
 }
 
+
+app.use(cors());
 // Parse JSON bodies for this app. Make sure you put
 // `app.use(express.json())` **before** your route handlers!
 app.use(express.json());

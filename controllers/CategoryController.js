@@ -124,68 +124,85 @@ export async function getCategoryById(req,res){
 }
 
 export async function createCategory(req,res){
-
     // data post
     let id = uuidv4();
-    let name = req.body.name;
+    let name = req.body.category;
+    let createdBy = req.body.created_by;
+    let updatedBy = req.body.updated_by;
     let timeNow = moment().format("YYYY-MM-DD hh:mm:ss");
-    let user = 'system'
 
-    try{
-
-        //data for response if success
-        let data = {
-
-            "id" : id,
-            "name" : name,
-            "created_at" : timeNow,
-            "created_by" : user,
-            "updated_at" : timeNow,
-            "updated_by" : user,
-            "deleted_at" : null,
-            "deleted_by" : null,
-
-        }
-
-        await Categories.create(data);
-
-        let responseData = {
-            
-            "success" : true,
-            "status" : res.statusCode,
-            "message" : "Success create data",
-            "data" : data
-
-        }
-
-        // console.log("Success get data...");
-
-        return res.status(res.statusCode).json(responseData);
-
-    }catch(error){
-
-        console.log(error);
-
-        console.log("Failed create data category...");
-
-        let errorStr = JSON.stringify(error);
-
-        let errorToJson = JSON.parse(errorStr);
-
-        // console.log(errorToJson);
+    if(!name || name === "" || name.match(/^ *$/) !== null){
 
         let errorObj = {
 
             "error" : true,
             "status" : 401,
-            "message" : errorToJson.original.sqlMessage,
+            "message" : "Please insert category name",
 
         }
 
         // console.log(errorObj);
 
-        return res.status(401).json(errorObj);
+        return res.status(errorObj.status).json(errorObj);
 
+    }else{
+
+        try{
+
+            //data for response if success
+            let data = {
+
+                "id" : id,
+                "name" : name,
+                "created_at" : timeNow,
+                "created_by" : createdBy,
+                "updated_at" : timeNow,
+                "updated_by" : updatedBy,
+                "deleted_at" : null,
+                "deleted_by" : null,
+
+            }
+
+            await Categories.create(data);
+
+            let responseData = {
+                
+                "success" : true,
+                "status" : res.statusCode,
+                "message" : "Success create data",
+                "data" : data
+
+            }
+
+            // console.log("Success get data...");
+
+            return res.status(res.statusCode).json(responseData);
+
+        }catch(error){
+
+            console.log(error);
+
+            console.log("Failed create data category...");
+
+            let errorStr = JSON.stringify(error);
+
+            let errorToJson = JSON.parse(errorStr);
+
+            // console.log(errorToJson);
+
+            let errorObj = {
+
+                "error" : true,
+                "status" : 401,
+                "message" : errorToJson.original.sqlMessage,
+
+            }
+
+            // console.log(errorObj);
+
+            return res.status(401).json(errorObj);
+
+        }
     }
 
 }
