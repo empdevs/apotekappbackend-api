@@ -13,6 +13,13 @@ export const Categories = database.define("categories", {
         allowNull : false
 
     },
+    "number" : {
+
+        type : DataTypes.INTEGER,
+        unique : true,
+        autoIncrement : true
+
+    },
     "name" : {
 
         type : DataTypes.STRING,

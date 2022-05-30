@@ -19,7 +19,8 @@ try{
 
 }
 
-
+// CORS is a mechanism to tell the browser, whether a request that is 
+// dispatched from another web application domain or another origin, to our web application is allowed or not.
 app.use(cors());
 // Parse JSON bodies for this app. Make sure you put
 // `app.use(express.json())` **before** your route handlers!

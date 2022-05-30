@@ -13,10 +13,14 @@ export async function getAllCategories(req,res){
                 "deleted_by" : null,
                 "deleted_at" : null
 
-            }
+            },
+            order : [
+                
+                ['number', 'ASC']
+                
+            ]
 
         });
-
         let responseData = {
         
             "success" : true,

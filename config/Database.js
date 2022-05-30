@@ -18,6 +18,7 @@ const database = new Sequelize(process.env.DB_NAME, process.env.DB_USER, '', {
 //         host : process.env.DB_HOST || "localhost",
 //         user : process.env.DB_USER || "root",
 //         password : "",
+//         port : 3308,
 //         database : process.env.DB_NAME || "apotek"
 // });
 
