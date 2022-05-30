@@ -1,14 +1,14 @@
 import database from "../config/Database.js";
-
 //create table category
 database.connect(function(error){
-
+// 
     // console.log(error);
-
+// 
     try{
 
         let sql = `CREATE TABLE categories ( 
                         id VARCHAR(36), 
+                        number int NOT NULL AUTO_INCREMENT UNIQUE,
                         name VARCHAR(255) NOT NULL UNIQUE, 
                         created_at DATETIME, 
                         created_by VARCHAR(255), 
