@@ -130,7 +130,7 @@ export async function getCategoryById(req,res){
 export async function createCategory(req,res){
     // data post
     let id = uuidv4();
-    let name = req.body.category;
+    let name = req.body.name;
     let createdBy = req.body.created_by;
     let updatedBy = req.body.updated_by;
     let timeNow = moment().format("YYYY-MM-DD hh:mm:ss");
